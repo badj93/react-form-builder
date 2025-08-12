@@ -1,5 +1,5 @@
-import { FormBuilder } from '../form-builder.tsx';
-import type { FormBuilderOnChange } from '../types.ts';
+import { FormCraft } from '../form-craft.tsx';
+import type { FormCraftOnChange } from '../types.ts';
 import { FIELDS, VALIDATION_RULES } from './constants.tsx';
 import './app.css';
 
@@ -9,13 +9,13 @@ export function App() {
     console.log('data', data);
   };
 
-  const onChange = ({ field, value }: FormBuilderOnChange) => {
+  const onChange = ({ field, value }: FormCraftOnChange) => {
     console.log('field', field);
     console.log('value', value);
   };
 
   return (
-    <FormBuilder
+    <FormCraft
       className="form"
       fields={FIELDS}
       state={{

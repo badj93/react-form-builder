@@ -16,11 +16,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        'react-form-builder': resolve(__dirname, 'src/lib.ts'),
-        'form-builder': resolve(__dirname, 'src/form-builder.tsx'),
+        'react-form-craft': resolve(__dirname, 'src/lib.ts'),
+        'form-craft': resolve(__dirname, 'src/form-craft.tsx'),
       },
-      name: 'react-form-builder',
-      fileName: 'react-form-builder',
+      name: 'react-form-craft',
+      fileName: 'react-form-craft',
     },
     copyPublicDir: false,
     rollupOptions: {

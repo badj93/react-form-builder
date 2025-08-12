@@ -1,16 +1,16 @@
-import { FormBuilder } from './form-builder';
+import { FormCraft } from './form-craft.tsx';
 import { useForm } from './use-form';
 import type {
-  FormBuilderField,
-  FormBuilderOnChange,
+  FormCraftField,
+  FormCraftOnChange,
   ValidationErrors,
   ValidationRules,
 } from './types';
 
-export { FormBuilder, useForm };
+export { FormCraft, useForm };
 export type {
-  FormBuilderField,
-  FormBuilderOnChange,
+  FormCraftField,
+  FormCraftOnChange,
   ValidationErrors,
   ValidationRules,
 };

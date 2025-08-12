@@ -1,8 +1,8 @@
 import type { ChangeEvent, HTMLAttributes } from 'react';
-import type { FormBuilderField } from '../types.ts';
+import type { FormCraftField } from '../types.ts';
 
 interface SelectProps extends HTMLAttributes<HTMLSelectElement> {
-  f: FormBuilderField;
+  f: FormCraftField;
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 

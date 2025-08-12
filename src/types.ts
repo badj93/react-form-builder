@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactElement, ComponentType } from 'react';
 
-export interface FormBuilderField
+export interface FormCraftField
   extends HTMLAttributes<HTMLInputElement | HTMLSelectElement> {
   name: string;
   type:
@@ -19,7 +19,7 @@ export interface FormBuilderField
   control?: ReactElement | ComponentType<any>;
 }
 
-export interface FormBuilderOnChange {
+export interface FormCraftOnChange {
   field: string;
   value: any;
 }

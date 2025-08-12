@@ -7,25 +7,25 @@ import {
   type ComponentType,
 } from 'react';
 import type {
-  FormBuilderField,
-  FormBuilderOnChange,
+  FormCraftField,
+  FormCraftOnChange,
   ValidationErrors,
   ValidationRules,
 } from './types';
 import { useForm } from './use-form.ts';
 import { Checkbox, Input, Select } from './form-elements';
 
-interface FormBuilderProps {
-  fields: FormBuilderField[];
+interface FormCraftProps {
+  fields: FormCraftField[];
   submit: (data: any, errors: ValidationErrors | null) => Promise<void>;
   state: any;
   btnSubmit?: ReactNode;
   className?: string;
-  onChange?: ({ field, value }: FormBuilderOnChange) => void;
+  onChange?: ({ field, value }: FormCraftOnChange) => void;
   validationRules?: ValidationRules;
 }
 
-export function FormBuilder({
+export function FormCraft({
   fields,
   state,
   submit,
@@ -33,7 +33,7 @@ export function FormBuilder({
   className,
   onChange,
   validationRules,
-}: FormBuilderProps) {
+}: FormCraftProps) {
   const { formState, formAction } = useForm(submit, state, validationRules);
 
   const onChangeHandler = (
@@ -49,7 +49,7 @@ export function FormBuilder({
 
   const renderControl = (
     control: ReactElement | ComponentType<any>,
-    f: FormBuilderField
+    f: FormCraftField
   ) => {
     if (isValidElement(control)) {
       return cloneElement(control, { key: f.name, ...f });

@@ -1,8 +1,8 @@
 import type { ChangeEvent, HTMLAttributes } from 'react';
-import type { FormBuilderField } from '../types.ts';
+import type { FormCraftField } from '../types.ts';
 
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  f: FormBuilderField;
+  f: FormCraftField;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

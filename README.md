@@ -1,4 +1,4 @@
-# React Form Builder
+# React Form Craft
 
 A lightweight, flexible form building library for React applications with TypeScript support.
 
@@ -14,17 +14,17 @@ A lightweight, flexible form building library for React applications with TypeSc
 ## Installation
 
 ```bash
-npm install react-form-builder
+npm install react-form-craft
 ```
 ## Basic Usage
 
 ```tsx
 import { useState } from 'react';
 import { 
-    FormBuilder, 
+    FormCraft, 
     type ValidationErrors, 
-    type FormBuilderOnChange 
-} from 'react-formbuilder';
+    type FormCraftOnChange 
+} from 'react-form-craft';
 
 function MyForm() {
   const formState = {
@@ -82,14 +82,14 @@ function MyForm() {
     }
   };
 
-  const handleChange = ({ field, value }: FormBuilderOnChange) => {
+  const handleChange = ({ field, value }: FormCraftOnChange) => {
       console.log('field', field);
       console.log('value', value);
       // Process field data
   };
 
   return (
-    <FormBuilder
+    <FormCraft
       fields={fields}
       state={formState}
       submit={handleSubmit}
@@ -103,21 +103,21 @@ function MyForm() {
 
 ```
 ## API Reference
-### Props `FormBuilder`
+### Props `FormCraft`
 
 | Prop | Type                                                            | Required | Description |
 | --- |-----------------------------------------------------------------| --- | --- |
-| `fields` | `FormBuilderField[]`                                            | Yes | Array of field configurations |
+| `fields` | `FormCraftField[]`                                              | Yes | Array of field configurations |
 | `state` | `any`                                                           | Yes | Form state object |
 | `submit` | `(data: any, errors: ValidationErrors \ null) => Promise<void>` | Yes | Submit handler function |
 | `btnSubmit` | `ReactNode`                                                     | No | Custom submit button |
 | `className` | `string`                                                        | No | CSS class for form element |
-| `onChange` | `({ field, value }: FormBuilderOnChange) => void`               | No | Form change handler |
+| `onChange` | `({ field, value }: FormCraftOnChange) => void`                 | No | Form change handler |
 | `validationRules` | `ValidationRules`                                               | No | Validation rules for fields |
 
-### Interface `FormBuilderField`
+### Interface `FormCraftField`
 ```tsx
-interface FormBuilderField {
+interface FormCraftField {
   name: string;
   label?: string;
   type: 'text' | 'email' | 'password' | 'select' | 'checkbox' | string;
@@ -155,7 +155,7 @@ const fields2 = [
 ```
 
 ## Validation
-FormBuilder supports validation rules:
+FormCraft supports validation rules:
 ```txs
 const validationRules = {
   username: { required: true, message: 'Custom message' },

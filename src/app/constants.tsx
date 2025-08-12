@@ -1,6 +1,6 @@
-import type { FormBuilderField } from '../types.ts';
+import type { FormCraftField } from '../types.ts';
 
-export const FIELDS: FormBuilderField[] = [
+export const FIELDS: FormCraftField[] = [
   { name: 'name', type: 'text', placeholder: 'Enter...' },
   { name: 'surname', type: 'text', placeholder: 'Enter...' },
   { name: 'age', type: 'text', placeholder: 'Enter...' },
