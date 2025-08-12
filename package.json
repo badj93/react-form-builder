@@ -1,5 +1,7 @@
 {
   "name": "react-form-builder",
+  "author": "Sergey Suschevich",
+  "license": "MIT",
   "private": false,
   "version": "0.0.1",
   "type": "module",
