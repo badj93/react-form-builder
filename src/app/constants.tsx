@@ -44,10 +44,9 @@ export const VALIDATION_RULES = {
       value: true,
       message: 'Email is required',
     },
-    customRule: (value?: string) => {
-      if (value && !value.includes('@')) {
-        return { value, message: 'Email is invalid' };
-      }
+    email: {
+      value: true,
+      message: 'Email is invalid',
     },
   },
 };

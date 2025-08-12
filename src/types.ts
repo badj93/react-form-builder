@@ -34,6 +34,7 @@ export interface ValidationRules {
     required?: ValidationRuleDesc;
     maxLength?: ValidationRuleDesc;
     minLength?: ValidationRuleDesc;
+    email?: ValidationRuleDesc;
     customRule?: (value?: any) => { message: string } | undefined;
   };
 }

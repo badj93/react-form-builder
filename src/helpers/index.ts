@@ -1,6 +1,7 @@
 import type { ValidationErrors, ValidationRules } from '../types.ts';
 import {
   validateCustomRule,
+  validateEmail,
   validateFileRequired,
   validateMaxLength,
   validateMinLength,
@@ -37,6 +38,12 @@ export function validateField(
 
   if (minLengthError) {
     newErrors[key] = minLengthError;
+  }
+
+  const emailError = validateEmail(key, fieldValues, rule);
+
+  if (emailError) {
+    newErrors[key] = emailError;
   }
 
   const customRuleError = validateCustomRule(key, fieldValues, rule);
