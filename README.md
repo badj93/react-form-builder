@@ -67,7 +67,6 @@ function MyForm() {
     name: { required: true, message: 'Name is required', },
     email: { 
         required: true, 
-        email: true,
         customRule: (value?: string) => {
             if (value && !value.includes('@')) {
                 return { value, message: 'Email is invalid' };
