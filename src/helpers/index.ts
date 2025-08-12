@@ -5,6 +5,7 @@ import {
   validateFileRequired,
   validateMaxLength,
   validateMinLength,
+  validateRange,
   validateRequired,
 } from '../validation-rules';
 
@@ -44,6 +45,12 @@ export function validateField(
 
   if (emailError) {
     newErrors[key] = emailError;
+  }
+
+  const rangeError = validateRange(key, fieldValues, rule);
+
+  if (rangeError) {
+    newErrors[key] = rangeError;
   }
 
   const customRuleError = validateCustomRule(key, fieldValues, rule);

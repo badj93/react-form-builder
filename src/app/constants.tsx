@@ -1,9 +1,9 @@
-import type { FormCraftField } from '../types.ts';
+import type { FormCraftField, ValidationRules } from '../types.ts';
 
 export const FIELDS: FormCraftField[] = [
   { name: 'name', type: 'text', placeholder: 'Enter...' },
   { name: 'surname', type: 'text', placeholder: 'Enter...' },
-  { name: 'age', type: 'text', placeholder: 'Enter...' },
+  { name: 'age', type: 'text', placeholder: 'Enter age...' },
   {
     name: 'sex',
     type: 'select',
@@ -24,7 +24,7 @@ export const FIELDS: FormCraftField[] = [
   },
 ];
 
-export const VALIDATION_RULES = {
+export const VALIDATION_RULES: ValidationRules = {
   name: {
     required: {
       value: true,
@@ -47,6 +47,11 @@ export const VALIDATION_RULES = {
     email: {
       value: true,
       message: 'Email is invalid',
+    },
+  },
+  age: {
+    range: {
+      value: [18, 100],
     },
   },
 };
