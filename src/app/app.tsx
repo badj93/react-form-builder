@@ -19,8 +19,8 @@ export function App() {
       className="form"
       fields={FIELDS}
       state={{
-        name: 'test',
-        email: 'test@test.ru',
+        name: null,
+        email: null,
       }}
       validationRules={VALIDATION_RULES}
       submit={submit}
