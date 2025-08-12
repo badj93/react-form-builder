@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/badj93/react-form-craft/compare/v1.1.0...v1.1.1) (2025-08-12)
+
+
+### Bug Fixes
+
+* fix README.md ([8ffb6d7](https://github.com/badj93/react-form-craft/commit/8ffb6d772ae85b14682292138c2239cf46861eea))
+
 # [1.1.0](https://github.com/badj93/react-form-craft/compare/v1.0.0...v1.1.0) (2025-08-12)
 
 
