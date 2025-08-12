@@ -82,6 +82,11 @@ function MyForm() {
             }
         },
     },
+    age: {
+      range: {
+        value: [18, 100],
+      },
+    }
   };
 
   const handleSubmit = async (data: any, errors: ValidationErrors | null) => {
@@ -189,6 +194,11 @@ const validationRules = {
         return { value, message: 'Email is invalid' };
       }
     }
+  },
+  age: {
+    range: {
+      value: [18, 100],
+    },
   }
   ...
 };
