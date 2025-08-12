@@ -54,6 +54,7 @@
     "branches": [
       "main"
     ],
+    "repositoryUrl": "https://github.com/badj93/react-form-craft.git",
     "plugins": [
       [
         "@semantic-release/commit-analyzer"
