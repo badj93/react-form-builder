@@ -1,69 +1,175 @@
-# React + TypeScript + Vite
+# React Form Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight, flexible form building library for React applications with TypeScript support.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔧 Easy form setup with declarative configuration
+- 🧩 Built-in form elements (Input, Select, Checkbox)
+- 🛠 Custom control components support
+- ✅ Validation support
+- 🔄 Form state management
+- 🎨 Customizable styling
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+npm install react-form-builder
+```
+## Basic Usage
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```tsx
+import { useState } from 'react';
+import { 
+    FormBuilder, 
+    type ValidationErrors, 
+    type FormBuilderOnChange 
+} from 'react-formbuilder';
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+function MyForm() {
+  const formState = {
+      name: '',
+      email: '',
+      role: 'user',
+      agreeToTerms: false
+  };
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+  const fields = [
+    {
+      name: 'name',
+      label: 'Name',
+      type: 'text',
+      placeholder: 'Enter your name'
     },
-  },
-])
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+      placeholder: 'Enter your email'
+    },
+    {
+      name: 'role',
+      label: 'Role',
+      type: 'select',
+      options: [
+        { value: 'user', label: 'User' },
+        { value: 'admin', label: 'Admin' }
+      ]
+    },
+    {
+      name: 'agreeToTerms',
+      label: 'I agree to the terms',
+      type: 'checkbox'
+    }
+  ];
+
+  const validationRules = {
+    name: { required: true, message: 'Name is required', },
+    email: { 
+        required: true, 
+        email: true,
+        customRule: (value?: string) => {
+            if (value && !value.includes('@')) {
+                return { value, message: 'Email is invalid' };
+            }
+        },
+    },
+  };
+
+  const handleSubmit = async (data: any, errors: ValidationErrors | null) => {
+    if (!errors) {
+      console.log('Form submitted:', data);
+      // Process form data
+    }
+  };
+
+  const handleChange = ({ field, value }: FormBuilderOnChange) => {
+      console.log('field', field);
+      console.log('value', value);
+      // Process field data
+  };
+
+  return (
+    <FormBuilder
+      fields={fields}
+      state={formState}
+      submit={handleSubmit}
+      onChange={handleChange}
+      validationRules={validationRules}
+      className="my-form"
+      btnSubmit={<button type='submit' className="submit-btn">Submit Form</button>}
+    />
+  );
+}
+
+```
+## API Reference
+### Props `FormBuilder`
+
+| Prop | Type                                                            | Required | Description |
+| --- |-----------------------------------------------------------------| --- | --- |
+| `fields` | `FormBuilderField[]`                                            | Yes | Array of field configurations |
+| `state` | `any`                                                           | Yes | Form state object |
+| `submit` | `(data: any, errors: ValidationErrors \ null) => Promise<void>` | Yes | Submit handler function |
+| `btnSubmit` | `ReactNode`                                                     | No | Custom submit button |
+| `className` | `string`                                                        | No | CSS class for form element |
+| `onChange` | `({ field, value }: FormBuilderOnChange) => void`               | No | Form change handler |
+| `validationRules` | `ValidationRules`                                               | No | Validation rules for fields |
+
+### Interface `FormBuilderField`
+```tsx
+interface FormBuilderField {
+  name: string;
+  label?: string;
+  type: 'text' | 'email' | 'password' | 'select' | 'checkbox' | string;
+  placeholder?: string;
+  options?: Array<{ value: string; label: string }>;
+  control?: ReactElement | ComponentType<any>;
+  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  // Additional properties can be passed to the input elements
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Custom Form Controls
+You can provide custom form controls using the property: `control`
+```tsx
+import { MyCustomInput } from './components';
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
+const fields = [
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+    name: 'customField',
+    label: 'Custom Field',
+    type: 'text',
+    control: <MyCustomInput className="custom-input" />
+  }
+];
+
+const fields2 = [
+    {
+        name: 'customField',
+        label: 'Custom Field',
+        type: 'text',
+        control: MyCustomInput
+    }
+];
+
 ```
+
+## Validation
+FormBuilder supports validation rules:
+```txs
+const validationRules = {
+  username: { required: true, message: 'Custom message' },
+  email: {
+    ...
+    customRule: (value?: string) => {
+      if (value && !value.includes('@')) {
+        return { value, message: 'Email is invalid' };
+      }
+    }
+  }
+  ...
+};
+```
+## License
+MIT

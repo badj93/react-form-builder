@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement, ComponentType } from 'react';
 
 export interface FormBuilderField
   extends HTMLAttributes<HTMLInputElement | HTMLSelectElement> {
@@ -16,7 +16,7 @@ export interface FormBuilderField
   options?: any[];
   disabled?: boolean;
   placeholder?: string;
-  control?: ReactElement | Element;
+  control?: ReactElement | ComponentType<any>;
 }
 
 export interface FormBuilderOnChange {

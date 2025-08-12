@@ -16,7 +16,12 @@ export const FIELDS: FormBuilderField[] = [
   { name: 'email', type: 'text', placeholder: 'Enter...' },
   { name: 'birthday', type: 'date', placeholder: 'Enter...' },
   { name: 'agree', type: 'checkbox', placeholder: 'Agree?' },
-  { name: 'custom', type: 'text', placeholder: 'Enter...', control: <input /> },
+  {
+    name: 'custom',
+    type: 'text',
+    placeholder: 'Enter custom...',
+    control: <input />,
+  },
 ];
 
 export const VALIDATION_RULES = {

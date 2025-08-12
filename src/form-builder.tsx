@@ -1,4 +1,11 @@
-import { type ChangeEvent, cloneElement, type ReactNode } from 'react';
+import {
+  type ChangeEvent,
+  cloneElement,
+  type ReactNode,
+  isValidElement,
+  type ReactElement,
+  type ComponentType,
+} from 'react';
 import type {
   FormBuilderField,
   FormBuilderOnChange,
@@ -6,6 +13,7 @@ import type {
   ValidationRules,
 } from './types';
 import { useForm } from './use-form.ts';
+import { Checkbox, Input, Select } from './form-elements';
 
 interface FormBuilderProps {
   fields: FormBuilderField[];
@@ -39,57 +47,61 @@ export function FormBuilder({
     }
   };
 
+  const renderControl = (
+    control: ReactElement | ComponentType<any>,
+    f: FormBuilderField
+  ) => {
+    if (isValidElement(control)) {
+      return cloneElement(control, { key: f.name, ...f });
+    }
+
+    const ControlComponent = control;
+
+    return <ControlComponent key={f.name} {...f} />;
+  };
+
   const renderFields = () => {
     return fields.map(({ control, ...f }) => {
       if (f.type === 'select') {
-        if (control) return cloneElement(control, { key: f.name, ...f });
+        if (control) {
+          return renderControl(control, f);
+        }
 
         return (
-          <select
-            {...f}
-            onChange={onChange ? onChangeHandler : f.onChange}
+          <Select
             key={f.name}
+            f={f}
+            onChange={onChange ? onChangeHandler : f.onChange}
             defaultValue={formState[f.name]}
-            name={f.name}
-          >
-            {f.options?.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+          />
         );
       }
 
       if (f.type === 'checkbox') {
-        if (control) return cloneElement(control, { key: f.name, ...f });
+        if (control) {
+          return renderControl(control, f);
+        }
 
         return (
-          <label key={f.name} htmlFor={f.name}>
-            <input
-              id={f.name}
-              type={f.type}
-              onChange={onChange ? onChangeHandler : f.onChange}
-              name={f.name}
-              defaultValue={formState[f.name]}
-            />
-            <span>{f.placeholder}</span>
-          </label>
+          <Checkbox
+            key={f.name}
+            f={f}
+            onChange={onChange ? onChangeHandler : f.onChange}
+            defaultValue={formState[f.name]}
+          />
         );
       }
 
-      if (control) return cloneElement(control, { key: f.name, ...f });
+      if (control) {
+        return renderControl(control, f);
+      }
 
       return (
-        <input
+        <Input
+          f={f}
           onChange={onChange ? onChangeHandler : f.onChange}
-          key={f.name}
           defaultValue={formState[f.name]}
-          name={f.name}
-          type={f.type}
-          placeholder={f.placeholder}
-          disabled={f.disabled}
-          autoComplete="off"
+          key={f.name}
         />
       );
     });
