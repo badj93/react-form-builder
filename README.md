@@ -37,19 +37,16 @@ function MyForm() {
   const fields = [
     {
       name: 'name',
-      label: 'Name',
       type: 'text',
       placeholder: 'Enter your name'
     },
     {
       name: 'email',
-      label: 'Email',
       type: 'email',
       placeholder: 'Enter your email'
     },
     {
       name: 'role',
-      label: 'Role',
       type: 'select',
       options: [
         { value: 'user', label: 'User' },
@@ -58,7 +55,6 @@ function MyForm() {
     },
     {
       name: 'agreeToTerms',
-      label: 'I agree to the terms',
       type: 'checkbox'
     }
   ];
@@ -132,7 +128,6 @@ function MyForm() {
 ```tsx
 interface FormCraftField {
   name: string;
-  label?: string;
   type: 'text' | 'email' | 'password' | 'select' | 'checkbox' | string;
   placeholder?: string;
   options?: Array<{ value: string; label: string }>;
@@ -150,7 +145,6 @@ import { MyCustomInput } from './components';
 const fields = [
   {
     name: 'customField',
-    label: 'Custom Field',
     type: 'text',
     control: <MyCustomInput className="custom-input" />
   }
@@ -159,7 +153,6 @@ const fields = [
 const fields2 = [
     {
         name: 'customField',
-        label: 'Custom Field',
         type: 'text',
         control: MyCustomInput
     }
