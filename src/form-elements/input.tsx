@@ -7,16 +7,5 @@ interface InputProps extends HTMLAttributes<HTMLInputElement> {
 }
 
 export function Input({ f, onChange, ...props }: InputProps) {
-  return (
-    <input
-      onChange={onChange}
-      key={f.name}
-      name={f.name}
-      type={f.type}
-      placeholder={f.placeholder}
-      disabled={f.disabled}
-      autoComplete="off"
-      {...props}
-    />
-  );
+  return <input onChange={onChange} {...f} autoComplete="on" {...props} />;
 }

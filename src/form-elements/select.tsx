@@ -6,12 +6,16 @@ interface SelectProps extends HTMLAttributes<HTMLSelectElement> {
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export function Select({ f, onChange, ...props }: SelectProps) {
+export function Select({
+  f: { name, options, ...rest },
+  onChange,
+  ...props
+}: SelectProps) {
   return (
-    <select {...f} onChange={onChange} key={f.name} name={f.name} {...props}>
-      {f.options?.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
+    <select onChange={onChange} name={name} {...rest} {...props}>
+      {options?.map((o) => (
+        <option key={o.value} value={o.value}>
+          {o.label}
         </option>
       ))}
     </select>

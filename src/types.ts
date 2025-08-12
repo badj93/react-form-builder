@@ -24,15 +24,21 @@ export interface FormCraftOnChange {
   value: any;
 }
 
+export interface ValidationRuleDesc {
+  value: any;
+  message?: string;
+}
+
 export interface ValidationRules {
   [key: string]: {
-    required?: {
-      value: boolean;
-      message?: string;
-    };
+    required?: ValidationRuleDesc;
+    maxLength?: ValidationRuleDesc;
+    minLength?: ValidationRuleDesc;
     customRule?: (value?: any) => { message: string } | undefined;
   };
 }
+
+export type ValidationRuleRes = { value: any; message: string } | null;
 
 export interface ValidationErrors {
   [key: string]: {

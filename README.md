@@ -64,7 +64,20 @@ function MyForm() {
   ];
 
   const validationRules = {
-    name: { required: true, message: 'Name is required', },
+    name: { 
+        required: {
+            value: true,
+            message: 'Name is required',
+        },
+        maxLength: {
+            value: 10,
+            message: 'Name is too long',
+        },
+        minLength: {
+            value: 1,
+            message: 'Name is too short',
+        },
+    },
     email: { 
         required: true, 
         customRule: (value?: string) => {
@@ -158,7 +171,20 @@ const fields2 = [
 FormCraft supports validation rules:
 ```txs
 const validationRules = {
-  username: { required: true, message: 'Custom message' },
+  username: { 
+    required: {
+      value: true,
+      message: 'Name is required',
+    },
+    maxLength: {
+      value: 10,
+      message: 'Name is too long',
+    },
+    minLength: {
+      value: 1,
+      message: 'Name is too short',
+    }
+  },
   email: {
     ...
     customRule: (value?: string) => {

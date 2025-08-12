@@ -5,6 +5,7 @@ import type {
   FormCraftOnChange,
   ValidationErrors,
   ValidationRules,
+  ValidationRuleDesc,
 } from './types';
 
 export { FormCraft, useForm };
@@ -13,4 +14,5 @@ export type {
   FormCraftOnChange,
   ValidationErrors,
   ValidationRules,
+  ValidationRuleDesc,
 };

@@ -6,17 +6,15 @@ interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function Checkbox({ f, onChange, ...props }: CheckboxProps) {
+export function Checkbox({
+  f: { name, placeholder, ...rest },
+  onChange,
+  ...props
+}: CheckboxProps) {
   return (
-    <label key={f.name} htmlFor={f.name}>
-      <input
-        id={f.name}
-        type={f.type}
-        onChange={onChange}
-        name={f.name}
-        {...props}
-      />
-      <span>{f.placeholder}</span>
+    <label key={name} htmlFor={name}>
+      <input id={name} onChange={onChange} {...rest} {...props} />
+      <span>{placeholder}</span>
     </label>
   );
 }
