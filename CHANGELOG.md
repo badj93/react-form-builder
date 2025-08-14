@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/badj93/react-form-craft/compare/v1.1.2...v1.2.0) (2025-08-14)
+
+
+### Features
+
+* add textarea support ([1ca34fa](https://github.com/badj93/react-form-craft/commit/1ca34fa995a749b0e7415e0fb6be9c91900c1a8c))
+* add validate date range ([b96c923](https://github.com/badj93/react-form-craft/commit/b96c923759b91e84d484e7e88fb4a528ec12cb6b))
+
 ## [1.1.2](https://github.com/badj93/react-form-craft/compare/v1.1.1...v1.1.2) (2025-08-12)
 
 
