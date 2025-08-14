@@ -133,7 +133,17 @@ function MyForm() {
 ```tsx
 interface FormCraftField {
   name: string;
-  type: 'text' | 'email' | 'password' | 'select' | 'checkbox' | string;
+  type: 
+      'text' | 
+      'email' | 
+      'password' | 
+      'select' | 
+      'checkbox' | 
+      'textarea' | 
+      'file' | 
+      'number' | 
+      'date' |
+      'password';
   placeholder?: string;
   options?: Array<{ value: string; label: string }>;
   control?: ReactElement | ComponentType<any>;
@@ -199,7 +209,12 @@ const validationRules = {
     range: {
       value: [18, 100],
     },
-  }
+  },
+  birthday: {
+    range: {
+      value: [new Date(1991, 0, 1), new Date(2025, 0, 1)],
+    },
+  },
   ...
 };
 ```

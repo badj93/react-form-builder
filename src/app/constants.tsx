@@ -22,6 +22,11 @@ export const FIELDS: FormCraftField[] = [
     placeholder: 'Enter custom...',
     control: <input />,
   },
+  {
+    name: 'review',
+    type: 'textarea',
+    placeholder: 'Enter review',
+  },
 ];
 
 export const VALIDATION_RULES: ValidationRules = {
@@ -57,6 +62,12 @@ export const VALIDATION_RULES: ValidationRules = {
   birthday: {
     range: {
       value: [new Date(1991, 0, 1), new Date(2025, 0, 1)],
+    },
+  },
+  review: {
+    required: {
+      value: true,
+      message: 'Review is required',
     },
   },
 };

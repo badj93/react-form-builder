@@ -13,7 +13,7 @@ import type {
   ValidationRules,
 } from './types';
 import { useForm } from './use-form.ts';
-import { Checkbox, Input, Select } from './form-elements';
+import { Checkbox, Input, Select, TextArea } from './form-elements';
 
 interface FormCraftProps {
   fields: FormCraftField[];
@@ -37,7 +37,7 @@ export function FormCraft({
   const { formState, formAction } = useForm(submit, state, validationRules);
 
   const onChangeHandler = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     if (onChange) {
       onChange({
@@ -87,6 +87,21 @@ export function FormCraft({
             key={f.name}
             f={f}
             onChange={onChange ? onChangeHandler : f.onChange}
+            defaultValue={formState[f.name]}
+          />
+        );
+      }
+
+      if (f.type === 'textarea') {
+        if (control) {
+          return renderControl(control, f);
+        }
+
+        return (
+          <TextArea
+            key={f.name}
+            onChange={onChange ? onChangeHandler : f.onChange}
+            f={f}
             defaultValue={formState[f.name]}
           />
         );

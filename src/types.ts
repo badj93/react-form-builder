@@ -1,7 +1,9 @@
 import type { HTMLAttributes, ReactElement, ComponentType } from 'react';
 
 export interface FormCraftField
-  extends HTMLAttributes<HTMLInputElement | HTMLSelectElement> {
+  extends HTMLAttributes<
+    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  > {
   name: string;
   type:
     | 'text'
