@@ -14,7 +14,8 @@ export interface FormCraftField
     | 'number'
     | 'date'
     | 'password'
-    | 'checkbox';
+    | 'checkbox'
+    | 'radio';
   options?: any[];
   disabled?: boolean;
   placeholder?: string;

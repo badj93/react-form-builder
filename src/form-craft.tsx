@@ -13,7 +13,7 @@ import type {
   ValidationRules,
 } from './types';
 import { useForm } from './use-form.ts';
-import { Checkbox, Input, Select, TextArea } from './form-elements';
+import { Checkbox, Input, Radio, Select, TextArea } from './form-elements';
 
 interface FormCraftProps {
   fields: FormCraftField[];
@@ -99,6 +99,21 @@ export function FormCraft({
 
         return (
           <TextArea
+            key={f.name}
+            onChange={onChange ? onChangeHandler : f.onChange}
+            f={f}
+            defaultValue={formState[f.name]}
+          />
+        );
+      }
+
+      if (f.type === 'radio') {
+        if (control) {
+          return renderControl(control, f);
+        }
+
+        return (
+          <Radio
             key={f.name}
             onChange={onChange ? onChangeHandler : f.onChange}
             f={f}

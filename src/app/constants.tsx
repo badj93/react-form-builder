@@ -27,6 +27,12 @@ export const FIELDS: FormCraftField[] = [
     type: 'textarea',
     placeholder: 'Enter review',
   },
+  {
+    name: 'radio',
+    type: 'radio',
+    options: ['radio1', 'radio2', 'radio3'],
+    placeholder: 'Radio',
+  },
 ];
 
 export const VALIDATION_RULES: ValidationRules = {

@@ -116,6 +116,9 @@ function MyForm() {
 }
 
 ```
+See examples in src/app
+
+
 ## API Reference
 ### Props `FormCraft`
 

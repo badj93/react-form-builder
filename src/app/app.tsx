@@ -21,6 +21,8 @@ export function App() {
       state={{
         name: null,
         email: null,
+        review: 'test review',
+        radio: 'radio3',
       }}
       validationRules={VALIDATION_RULES}
       submit={submit}
