@@ -19,7 +19,8 @@
     "dev": "vite",
     "build": "tsc --p ./tsconfig.json && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "prepublishOnly": "npm run build",
   "peerDependencies": {
@@ -46,7 +47,8 @@
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.4"
   },
   "sideEffects": false,
   "exports": {
