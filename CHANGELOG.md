@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/badj93/react-form-craft/compare/v1.2.0...v1.3.0) (2025-08-14)
+
+
+### Features
+
+* add radio support ([6cb8424](https://github.com/badj93/react-form-craft/commit/6cb8424ffc417b7f7582eb067caaae82b9698f6c))
+
 # [1.2.0](https://github.com/badj93/react-form-craft/compare/v1.1.2...v1.2.0) (2025-08-14)
 
 
