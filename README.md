@@ -146,7 +146,6 @@ interface FormCraftField {
       'file' | 
       'number' | 
       'date' |
-      'password' | 
       string;
   placeholder?: string;
   options?: Array<{ value: string; label: string }>;
