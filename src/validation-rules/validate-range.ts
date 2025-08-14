@@ -14,6 +14,13 @@ export function validateRange(
     }
 
     if (
+      rule.range.value[0] instanceof Date ||
+      rule.range.value[1] instanceof Date
+    ) {
+      return null;
+    }
+
+    if (
       typeof rule.range.value[0] !== 'number' ||
       typeof rule.range.value[1] !== 'number'
     ) {

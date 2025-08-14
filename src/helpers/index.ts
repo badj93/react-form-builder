@@ -1,6 +1,7 @@
 import type { ValidationErrors, ValidationRules } from '../types.ts';
 import {
   validateCustomRule,
+  validateDateRange,
   validateEmail,
   validateFileRequired,
   validateMaxLength,
@@ -51,6 +52,12 @@ export function validateField(
 
   if (rangeError) {
     newErrors[key] = rangeError;
+  }
+
+  const rangeDateError = validateDateRange(key, fieldValues, rule);
+
+  if (rangeDateError) {
+    newErrors[key] = rangeDateError;
   }
 
   const customRuleError = validateCustomRule(key, fieldValues, rule);

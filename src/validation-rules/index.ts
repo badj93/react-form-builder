@@ -5,3 +5,4 @@ export * from './validate-file-required';
 export * from './validate-custom-rule';
 export * from './validate-email';
 export * from './validate-range';
+export * from './validate-date-range';

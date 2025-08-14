@@ -54,4 +54,9 @@ export const VALIDATION_RULES: ValidationRules = {
       value: [18, 100],
     },
   },
+  birthday: {
+    range: {
+      value: [new Date(1991, 0, 1), new Date(2025, 0, 1)],
+    },
+  },
 };
