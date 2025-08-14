@@ -11,6 +11,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/badj93/react-form-craft"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig.json && vite build",
