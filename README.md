@@ -146,7 +146,8 @@ interface FormCraftField {
       'file' | 
       'number' | 
       'date' |
-      'password';
+      'password' | 
+      string;
   placeholder?: string;
   options?: Array<{ value: string; label: string }>;
   control?: ReactElement | ComponentType<any>;
