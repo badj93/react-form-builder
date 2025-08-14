@@ -56,7 +56,13 @@ function MyForm() {
     {
       name: 'agreeToTerms',
       type: 'checkbox'
-    }
+    },
+    {
+      name: 'radio',
+      type: 'radio',
+      options: ['radio1', 'radio2', 'radio3'],
+      placeholder: 'Radio',
+    },  
   ];
 
   const validationRules = {
@@ -146,6 +152,7 @@ interface FormCraftField {
       'file' | 
       'number' | 
       'date' |
+      'radio' |
       string;
   placeholder?: string;
   options?: Array<{ value: string; label: string }>;
