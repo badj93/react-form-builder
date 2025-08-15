@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/badj93/react-form-craft/compare/v1.3.4...v1.4.0) (2025-08-15)
+
+
+### Features
+
+* return changed state. reset form state. ([022742f](https://github.com/badj93/react-form-craft/commit/022742fbf9425e693ab69aa07712f90c3510cfac))
+
 # [1.3.0](https://github.com/badj93/react-form-craft/compare/v1.2.0...v1.3.0) (2025-08-14)
 
 
