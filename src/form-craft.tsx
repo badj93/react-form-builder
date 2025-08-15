@@ -8,23 +8,24 @@ import {
 } from 'react';
 import type {
   FormCraftField,
+  FormCraftHandleSubmitParams,
   FormCraftOnChange,
   ValidationRules,
 } from './types';
 import { useForm } from './use-form.ts';
 import { Checkbox, Input, Radio, Select, TextArea } from './form-elements';
 
-interface FormCraftProps {
+interface FormCraftProps<STATE> {
   fields: FormCraftField[];
-  submit: Parameters<typeof useForm>[0];
-  state: any;
+  submit: (params: FormCraftHandleSubmitParams) => Promise<STATE> | STATE;
+  state?: any;
   btnSubmit?: ReactNode;
   className?: string;
   onChange?: ({ field, value }: FormCraftOnChange) => void;
   validationRules?: ValidationRules;
 }
 
-export function FormCraft({
+export function FormCraft<STATE>({
   fields,
   state,
   submit,
@@ -32,7 +33,7 @@ export function FormCraft({
   className,
   onChange,
   validationRules,
-}: FormCraftProps) {
+}: FormCraftProps<STATE>) {
   const { formState, formAction } = useForm(submit, state, validationRules);
 
   const onChangeHandler = (
@@ -89,7 +90,7 @@ export function FormCraft({
             key={f.name}
             f={f}
             onChange={onChange ? onChangeHandler : f.onChange}
-            defaultValue={formState[f.name]}
+            defaultChecked={formState[f.name]}
           />
         );
       }

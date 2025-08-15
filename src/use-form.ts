@@ -1,8 +1,8 @@
 import { useActionState, useState } from 'react';
 import type {
-  HandleSubmit,
   ValidationErrors,
   ValidationRules,
+  FormCraftHandleSubmitParams,
 } from './types.ts';
 import { validateField } from './helpers';
 
@@ -14,7 +14,7 @@ interface FormProps<STATE, PAYLOAD> {
 }
 
 export function useForm<STATE, PAYLOAD>(
-  handleSubmit: HandleSubmit<STATE>,
+  handleSubmit: (params: FormCraftHandleSubmitParams) => Promise<STATE> | STATE,
   initialState: Awaited<STATE>,
   validationRules?: ValidationRules
 ): FormProps<STATE, PAYLOAD> {
@@ -39,15 +39,15 @@ export function useForm<STATE, PAYLOAD>(
 
     setErrors(errors);
 
-    const result = (await handleSubmit(
+    const result = (await handleSubmit({
       state,
-      Object.fromEntries(payload as any) as PAYLOAD,
-      errors
-    )) as Promise<STATE>;
+      payload: Object.fromEntries(payload as any) as PAYLOAD,
+      errors,
+    })) as Promise<STATE>;
 
     if (result) return result;
 
-    return state;
+    return state as STATE;
   }
 
   return {

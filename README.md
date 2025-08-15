@@ -23,7 +23,8 @@ import { useState } from 'react';
 import { 
     FormCraft, 
     type ValidationErrors, 
-    type FormCraftOnChange 
+    type FormCraftOnChange,
+    type FormCraftHandleSubmitParams
 } from 'react-form-craft';
 
 function MyForm() {
@@ -116,7 +117,7 @@ function MyForm() {
     }
   };
 
-  const handleSubmit = async (state: State, payload: PAYLOAD, errors: ValidationErrors | null) => {
+  const handleSubmit = async ({ state, payload, errors }: FormCraftHandleSubmitParams) => {
       console.log('state', state);
       console.log('payload', payload);
       console.log('errors', errors);
@@ -151,15 +152,15 @@ See examples in src/app
 ## API Reference
 ### Props `FormCraft`
 
-| Prop | Type                                                                                 | Required | Description |
-| --- |--------------------------------------------------------------------------------------| --- | --- |
-| `fields` | `FormCraftField[]`                                                                   | Yes | Array of field configurations |
-| `state` | `any`                                                                                | Yes | Form state object |
-| `submit` | `(state: State, payload: PAYLOAD, errors: ValidationErrors \ null) => Promise<void>` | Yes | Submit handler function |
-| `btnSubmit` | `ReactNode`                                                                          | No | Custom submit button |
-| `className` | `string`                                                                             | No | CSS class for form element |
-| `onChange` | `({ field, value }: FormCraftOnChange) => void`                                      | No | Form change handler |
-| `validationRules` | `ValidationRules`                                                                    | No | Validation rules for fields |
+| Prop | Type                                                                        | Required | Description |
+| --- |-----------------------------------------------------------------------------| --- | --- |
+| `fields` | `FormCraftField[]`                                                          | Yes | Array of field configurations |
+| `state` | `any`                                                                       | Yes | Form state object |
+| `submit` | `({ state, payload, errors }: FormCraftHandleSubmitParams) => Promise<any>` | Yes | Submit handler function |
+| `btnSubmit` | `ReactNode`                                                                 | No | Custom submit button |
+| `className` | `string`                                                                    | No | CSS class for form element |
+| `onChange` | `({ field, value }: FormCraftOnChange) => void`                             | No | Form change handler |
+| `validationRules` | `ValidationRules`                                                           | No | Validation rules for fields |
 
 ### Interface `FormCraftField`
 ```tsx

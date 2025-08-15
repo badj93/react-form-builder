@@ -6,6 +6,7 @@ import type {
   ValidationErrors,
   ValidationRules,
   ValidationRuleDesc,
+  FormCraftHandleSubmitParams,
 } from './types';
 
 export { FormCraft, useForm };
@@ -15,4 +16,5 @@ export type {
   ValidationErrors,
   ValidationRules,
   ValidationRuleDesc,
+  FormCraftHandleSubmitParams,
 };

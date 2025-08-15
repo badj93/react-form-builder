@@ -55,8 +55,8 @@ export interface ValidationErrors {
   };
 }
 
-export type HandleSubmit<STATE> = (
-  state: any,
-  payload: any,
-  errors: ValidationErrors | null
-) => Promise<STATE> | STATE;
+export interface FormCraftHandleSubmitParams<STATE = any, PAYLOAD = any> {
+  state: STATE;
+  payload: PAYLOAD;
+  errors: ValidationErrors | null;
+}
