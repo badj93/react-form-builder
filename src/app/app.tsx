@@ -1,12 +1,18 @@
 import { FormCraft } from '../form-craft.tsx';
-import type { FormCraftOnChange } from '../types.ts';
+import type { FormCraftOnChange, ValidationErrors } from '../types.ts';
 import { FIELDS, VALIDATION_RULES } from './constants.tsx';
 import './app.css';
 
 export function App() {
-  const submit = async (data: any, errors: any) => {
+  const submit = async (
+    state: any,
+    payload: any,
+    errors: ValidationErrors | null
+  ) => {
+    console.log('state', state);
+    console.log('payload', payload);
     console.log('errors', errors);
-    console.log('data', data);
+    return payload;
   };
 
   const onChange = ({ field, value }: FormCraftOnChange) => {
@@ -19,7 +25,7 @@ export function App() {
       className="form"
       fields={FIELDS}
       state={{
-        name: null,
+        fio: null,
         email: null,
         review: 'test review',
         radio: 'radio3',

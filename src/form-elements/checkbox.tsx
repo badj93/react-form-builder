@@ -12,8 +12,8 @@ export function Checkbox({
   ...props
 }: CheckboxProps) {
   return (
-    <label key={name} htmlFor={name}>
-      <input id={name} onChange={onChange} {...rest} {...props} />
+    <label htmlFor={name}>
+      <input id={name} onChange={onChange} name={name} {...rest} {...props} />
       <span>{placeholder}</span>
     </label>
   );

@@ -9,7 +9,6 @@ import {
 import type {
   FormCraftField,
   FormCraftOnChange,
-  ValidationErrors,
   ValidationRules,
 } from './types';
 import { useForm } from './use-form.ts';
@@ -17,7 +16,7 @@ import { Checkbox, Input, Radio, Select, TextArea } from './form-elements';
 
 interface FormCraftProps {
   fields: FormCraftField[];
-  submit: (data: any, errors: ValidationErrors | null) => Promise<void>;
+  submit: Parameters<typeof useForm>[0];
   state: any;
   btnSubmit?: ReactNode;
   className?: string;
@@ -60,8 +59,12 @@ export function FormCraft({
     return <ControlComponent key={f.name} {...f} />;
   };
 
-  const renderFields = () => {
-    return fields.map(({ control, ...f }) => {
+  const renderFields = (groupFields?: FormCraftField[]): any => {
+    return (
+      groupFields instanceof Array && groupFields?.length > 0
+        ? groupFields
+        : fields
+    ).map(({ control, ...f }) => {
       if (f.type === 'select') {
         if (control) {
           return renderControl(control, f);
@@ -72,7 +75,6 @@ export function FormCraft({
             key={f.name}
             f={f}
             onChange={onChange ? onChangeHandler : f.onChange}
-            defaultValue={formState[f.name]}
           />
         );
       }
@@ -122,6 +124,14 @@ export function FormCraft({
         );
       }
 
+      if (
+        f.type === 'group' &&
+        f.group instanceof Array &&
+        f.group.length > 0
+      ) {
+        return renderFields(f.group);
+      }
+
       if (control) {
         return renderControl(control, f);
       }
@@ -130,7 +140,9 @@ export function FormCraft({
         <Input
           f={f}
           onChange={onChange ? onChangeHandler : f.onChange}
-          defaultValue={formState[f.name]}
+          defaultValue={
+            formState && f.name in formState ? formState[f.name] : undefined
+          }
           key={f.name}
         />
       );

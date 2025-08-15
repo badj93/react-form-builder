@@ -62,7 +62,28 @@ function MyForm() {
       type: 'radio',
       options: ['radio1', 'radio2', 'radio3'],
       placeholder: 'Radio',
-    },  
+    }, 
+    {
+      name: 'group example',
+      type: 'group', 
+      group: [
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: 'Enter name',
+        },
+        {
+          name: 'surname',
+          type: 'text',
+          placeholder: 'Enter surname',
+        },
+        {
+          name: 'agree_with_policy',
+          type: 'checkbox',
+          placeholder: 'Do you agree with user policy?',
+        },
+      ],
+    },    
   ];
 
   const validationRules = {
@@ -95,11 +116,13 @@ function MyForm() {
     }
   };
 
-  const handleSubmit = async (data: any, errors: ValidationErrors | null) => {
-    if (!errors) {
-      console.log('Form submitted:', data);
-      // Process form data
-    }
+  const handleSubmit = async (state: State, payload: PAYLOAD, errors: ValidationErrors | null) => {
+      console.log('state', state);
+      console.log('payload', payload);
+      console.log('errors', errors);
+      // if you want to reset form data then return void
+      // else return payload(changed state) or state(initial state)
+      return payload;
   };
 
   const handleChange = ({ field, value }: FormCraftOnChange) => {
@@ -128,15 +151,15 @@ See examples in src/app
 ## API Reference
 ### Props `FormCraft`
 
-| Prop | Type                                                            | Required | Description |
-| --- |-----------------------------------------------------------------| --- | --- |
-| `fields` | `FormCraftField[]`                                              | Yes | Array of field configurations |
-| `state` | `any`                                                           | Yes | Form state object |
-| `submit` | `(data: any, errors: ValidationErrors \ null) => Promise<void>` | Yes | Submit handler function |
-| `btnSubmit` | `ReactNode`                                                     | No | Custom submit button |
-| `className` | `string`                                                        | No | CSS class for form element |
-| `onChange` | `({ field, value }: FormCraftOnChange) => void`                 | No | Form change handler |
-| `validationRules` | `ValidationRules`                                               | No | Validation rules for fields |
+| Prop | Type                                                                                 | Required | Description |
+| --- |--------------------------------------------------------------------------------------| --- | --- |
+| `fields` | `FormCraftField[]`                                                                   | Yes | Array of field configurations |
+| `state` | `any`                                                                                | Yes | Form state object |
+| `submit` | `(state: State, payload: PAYLOAD, errors: ValidationErrors \ null) => Promise<void>` | Yes | Submit handler function |
+| `btnSubmit` | `ReactNode`                                                                          | No | Custom submit button |
+| `className` | `string`                                                                             | No | CSS class for form element |
+| `onChange` | `({ field, value }: FormCraftOnChange) => void`                                      | No | Form change handler |
+| `validationRules` | `ValidationRules`                                                                    | No | Validation rules for fields |
 
 ### Interface `FormCraftField`
 ```tsx
@@ -153,6 +176,7 @@ interface FormCraftField {
       'number' | 
       'date' |
       'radio' |
+      'group' |
       string;
   placeholder?: string;
   options?: Array<{ value: string; label: string }>;

@@ -1,8 +1,7 @@
 import type { FormCraftField, ValidationRules } from '../types.ts';
 
 export const FIELDS: FormCraftField[] = [
-  { name: 'name', type: 'text', placeholder: 'Enter...' },
-  { name: 'surname', type: 'text', placeholder: 'Enter...' },
+  { name: 'fio', type: 'text', placeholder: 'Enter fio...' },
   { name: 'age', type: 'text', placeholder: 'Enter age...' },
   {
     name: 'sex',
@@ -13,9 +12,13 @@ export const FIELDS: FormCraftField[] = [
       { value: 'female', label: 'Female' },
     ],
   },
-  { name: 'email', type: 'text', placeholder: 'Enter...' },
-  { name: 'birthday', type: 'date', placeholder: 'Enter...' },
-  { name: 'agree', type: 'checkbox', placeholder: 'Agree?' },
+  { name: 'email', type: 'text', placeholder: 'Enter email...' },
+  { name: 'birthday', type: 'date', placeholder: 'Enter birthday...' },
+  {
+    name: 'agree',
+    type: 'checkbox',
+    placeholder: 'Agree?',
+  },
   {
     name: 'custom',
     type: 'text',
@@ -33,21 +36,43 @@ export const FIELDS: FormCraftField[] = [
     options: ['radio1', 'radio2', 'radio3'],
     placeholder: 'Radio',
   },
+  {
+    name: 'group example',
+    type: 'group',
+    className: 'css class',
+    group: [
+      {
+        name: 'name',
+        type: 'text',
+        placeholder: 'Enter name',
+      },
+      {
+        name: 'surname',
+        type: 'text',
+        placeholder: 'Enter surname',
+      },
+      {
+        name: 'agree_with_policy',
+        type: 'checkbox',
+        placeholder: 'Do you agree with user policy?',
+      },
+    ],
+  },
 ];
 
 export const VALIDATION_RULES: ValidationRules = {
-  name: {
+  fio: {
     required: {
       value: true,
-      message: 'Name is required',
+      message: 'Fio is required',
     },
     maxLength: {
       value: 10,
-      message: 'Name is too long',
+      message: 'Fio is too long',
     },
     minLength: {
       value: 1,
-      message: 'Name is too short',
+      message: 'Fio is too short',
     },
   },
   email: {

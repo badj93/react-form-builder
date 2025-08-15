@@ -16,11 +16,13 @@ export interface FormCraftField
     | 'password'
     | 'checkbox'
     | 'radio'
+    | 'group'
     | string;
   options?: any[];
   disabled?: boolean;
   placeholder?: string;
   control?: ReactElement | ComponentType<any>;
+  group?: FormCraftField[];
 }
 
 export interface FormCraftOnChange {
@@ -52,3 +54,9 @@ export interface ValidationErrors {
     message: string;
   };
 }
+
+export type HandleSubmit<STATE> = (
+  state: any,
+  payload: any,
+  errors: ValidationErrors | null
+) => Promise<STATE> | STATE;

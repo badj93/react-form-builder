@@ -1,28 +1,34 @@
 import { useActionState, useState } from 'react';
-import type { ValidationRules, ValidationErrors } from './types.ts';
+import type {
+  HandleSubmit,
+  ValidationErrors,
+  ValidationRules,
+} from './types.ts';
 import { validateField } from './helpers';
 
-interface FormProps<T> {
-  formAction: () => void;
+interface FormProps<STATE, PAYLOAD> {
+  formAction: (payload: PAYLOAD) => void;
   pending: boolean;
-  formState: T;
+  formState: STATE;
   errors: ValidationErrors | null;
 }
 
-export function useForm<T extends Record<string, any>>(
-  handleSubmit: (data: T, errors: ValidationErrors | null) => Promise<void>,
-  initialState: Awaited<T>,
+export function useForm<STATE, PAYLOAD>(
+  handleSubmit: HandleSubmit<STATE>,
+  initialState: Awaited<STATE>,
   validationRules?: ValidationRules
-): FormProps<T> {
-  const [formState, formAction, pending] = useActionState<T>(
-    // @ts-ignore
+): FormProps<STATE, PAYLOAD> {
+  const [formState, formAction, pending] = useActionState<STATE, PAYLOAD>(
     onSubmit,
     initialState
   );
   const [errors, setErrors] = useState<ValidationErrors | null>(null);
 
-  async function onSubmit(_previousState: T, formData: FormData): Promise<T> {
-    const fieldValues = Object.fromEntries(formData) as T;
+  async function onSubmit(
+    state: Awaited<STATE>,
+    payload: PAYLOAD
+  ): Promise<STATE> {
+    const fieldValues = Object.fromEntries(payload as any) as PAYLOAD;
     let errors: ValidationErrors | null = null;
 
     if (validationRules && Object.keys(validationRules).length > 0) {
@@ -33,9 +39,15 @@ export function useForm<T extends Record<string, any>>(
 
     setErrors(errors);
 
-    await handleSubmit(fieldValues, errors);
+    const result = (await handleSubmit(
+      state,
+      Object.fromEntries(payload as any) as PAYLOAD,
+      errors
+    )) as Promise<STATE>;
 
-    return fieldValues;
+    if (result) return result;
+
+    return state;
   }
 
   return {
