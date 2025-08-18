@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/badj93/react-form-craft/compare/v1.4.0...v1.4.1) (2025-08-15)
+
+
+### Bug Fixes
+
+* change get params for submit function ([27a7e88](https://github.com/badj93/react-form-craft/commit/27a7e88c4f0a5f1a595a9230ca9a320f67e0f1a8))
+
 # [1.4.0](https://github.com/badj93/react-form-craft/compare/v1.3.4...v1.4.0) (2025-08-15)
 
 
