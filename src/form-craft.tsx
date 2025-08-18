@@ -51,18 +51,18 @@ export function FormCraft<STATE extends Record<string, any>>({
     control: ReactElement | ComponentType<any>,
     f: FormCraftField
   ) => {
-    const props = { key: f.name, ...f };
+    const props = f;
 
     if (f.type === 'checkbox') props.defaultChecked = formState[f.name];
     if (f.type !== 'checkbox') props.defaultValue = formState[f.name];
 
     if (isValidElement(control)) {
-      return cloneElement(control, props);
+      return cloneElement(control, { key: f.name, ...f });
     }
 
     const ControlComponent = control;
 
-    return <ControlComponent {...props} />;
+    return <ControlComponent key={f.name} {...props} />;
   };
 
   const renderFields = (groupFields?: FormCraftField[]): any => {
