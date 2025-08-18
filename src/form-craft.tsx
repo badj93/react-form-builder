@@ -53,10 +53,10 @@ export function FormCraft<STATE extends Record<string, any>>({
   ) => {
     const props = { key: f.name, ...f };
 
-    if (isValidElement(control)) {
-      if (f.type === 'checkbox') props.defaultChecked = formState[f.name];
-      if (f.type !== 'checkbox') props.defaultValue = formState[f.name];
+    if (f.type === 'checkbox') props.defaultChecked = formState[f.name];
+    if (f.type !== 'checkbox') props.defaultValue = formState[f.name];
 
+    if (isValidElement(control)) {
       return cloneElement(control, props);
     }
 
