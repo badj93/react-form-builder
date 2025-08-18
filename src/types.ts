@@ -23,6 +23,7 @@ export interface FormCraftField
   placeholder?: string;
   control?: ReactElement | ComponentType<any>;
   group?: FormCraftField[];
+  [key: string]: any;
 }
 
 export interface FormCraftOnChange {

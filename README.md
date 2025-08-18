@@ -179,7 +179,7 @@ interface FormCraftField {
   options?: Array<{ value: string; label: string }>;
   control?: ReactElement | ComponentType<any>;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  // Additional properties can be passed to the input elements
+  [key: string]: any;
 }
 ```
 
