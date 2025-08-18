@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/badj93/react-form-craft/compare/v1.4.5...v1.4.6) (2025-08-18)
+
+
+### Bug Fixes
+
+* fix passing key prop ([2689314](https://github.com/badj93/react-form-craft/commit/2689314f10e4b7e4eab51196cc066ea35c871c73))
+
 ## [1.4.5](https://github.com/badj93/react-form-craft/compare/v1.4.4...v1.4.5) (2025-08-18)
 
 
