@@ -1,3 +1,10 @@
+## [1.4.8](https://github.com/badj93/react-form-craft/compare/v1.4.7...v1.4.8) (2025-08-18)
+
+
+### Bug Fixes
+
+* fix passing error msg to component ([64bf941](https://github.com/badj93/react-form-craft/commit/64bf941878f870a51c3efa4cff535009c3a67634))
+
 ## [1.4.7](https://github.com/badj93/react-form-craft/compare/v1.4.6...v1.4.7) (2025-08-18)
 
 
