@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/badj93/react-form-craft/compare/v1.4.3...v1.4.4) (2025-08-18)
+
+
+### Bug Fixes
+
+* fix types and fix passing props for custom component ([c94aa4d](https://github.com/badj93/react-form-craft/commit/c94aa4d39c19d4151694e7cc00148ce37b74f12b))
+
 ## [1.4.3](https://github.com/badj93/react-form-craft/compare/v1.4.2...v1.4.3) (2025-08-18)
 
 
