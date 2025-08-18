@@ -44,7 +44,8 @@ function MyForm() {
     {
       name: 'email',
       type: 'email',
-      placeholder: 'Enter your email'
+      placeholder: 'Enter your email',
+      control: (props) => <CustomInput {...props} errorMsg={props.error} />  
     },
     {
       name: 'role',
@@ -72,11 +73,6 @@ function MyForm() {
           name: 'name',
           type: 'text',
           placeholder: 'Enter name',
-        },
-        {
-          name: 'surname',
-          type: 'text',
-          placeholder: 'Enter surname',
         },
         {
           name: 'agree_with_policy',

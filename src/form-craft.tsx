@@ -34,7 +34,11 @@ export function FormCraft<STATE extends Record<string, any>>({
   onChange,
   validationRules,
 }: FormCraftProps<STATE>) {
-  const { formState, formAction } = useForm(submit, state, validationRules);
+  const { formState, formAction, errors } = useForm(
+    submit,
+    state,
+    validationRules
+  );
 
   const onChangeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -62,7 +66,13 @@ export function FormCraft<STATE extends Record<string, any>>({
 
     const ControlComponent = control;
 
-    return <ControlComponent key={f.name} {...props} />;
+    return (
+      <ControlComponent
+        key={f.name}
+        {...props}
+        error={errors && f.name in errors ? errors[f.name] : null}
+      />
+    );
   };
 
   const renderFields = (groupFields?: FormCraftField[]): any => {
