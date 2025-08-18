@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/badj93/react-form-craft/compare/v1.4.1...v1.4.2) (2025-08-18)
+
+
+### Bug Fixes
+
+* fix checkbox state behavior ([d3b1c36](https://github.com/badj93/react-form-craft/commit/d3b1c36b13a2a5fc4eb2bc4f47960a3b3de1793e))
+
 ## [1.4.1](https://github.com/badj93/react-form-craft/compare/v1.4.0...v1.4.1) (2025-08-15)
 
 
