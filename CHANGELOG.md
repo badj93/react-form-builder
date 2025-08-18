@@ -1,3 +1,10 @@
+## [1.4.9](https://github.com/badj93/react-form-craft/compare/v1.4.8...v1.4.9) (2025-08-18)
+
+
+### Bug Fixes
+
+* add any prop for FormCraftField ([fc179c0](https://github.com/badj93/react-form-craft/commit/fc179c03ff47f59fe124164444029ea3d2579c3c))
+
 ## [1.4.8](https://github.com/badj93/react-form-craft/compare/v1.4.7...v1.4.8) (2025-08-18)
 
 
