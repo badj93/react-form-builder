@@ -70,7 +70,7 @@ export function FormCraft<STATE extends Record<string, any>>({
       <ControlComponent
         key={f.name}
         {...props}
-        error={errors && f.name in errors ? errors[f.name] : null}
+        error={errors && f.name in errors ? errors[f.name].message : null}
       />
     );
   };
