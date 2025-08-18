@@ -18,14 +18,14 @@ import { Checkbox, Input, Radio, Select, TextArea } from './form-elements';
 interface FormCraftProps<STATE> {
   fields: FormCraftField[];
   submit: (params: FormCraftHandleSubmitParams) => Promise<STATE> | STATE;
-  state?: any;
+  state: Awaited<STATE>;
   btnSubmit?: ReactNode;
   className?: string;
   onChange?: ({ field, value }: FormCraftOnChange) => void;
   validationRules?: ValidationRules;
 }
 
-export function FormCraft<STATE>({
+export function FormCraft<STATE extends Record<string, any>>({
   fields,
   state,
   submit,
@@ -51,13 +51,18 @@ export function FormCraft<STATE>({
     control: ReactElement | ComponentType<any>,
     f: FormCraftField
   ) => {
+    const props = { key: f.name, ...f };
+
     if (isValidElement(control)) {
-      return cloneElement(control, { key: f.name, ...f });
+      if (f.type === 'checkbox') props.defaultChecked = formState[f.name];
+      if (f.type !== 'checkbox') props.defaultValue = formState[f.name];
+
+      return cloneElement(control, props);
     }
 
     const ControlComponent = control;
 
-    return <ControlComponent key={f.name} {...f} />;
+    return <ControlComponent {...props} />;
   };
 
   const renderFields = (groupFields?: FormCraftField[]): any => {
