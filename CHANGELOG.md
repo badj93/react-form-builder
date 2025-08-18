@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/badj93/react-form-craft/compare/v1.4.2...v1.4.3) (2025-08-18)
+
+
+### Bug Fixes
+
+* remove viteCompression ([42123e3](https://github.com/badj93/react-form-craft/commit/42123e3dc40ccf2f44300db62030e0637b5a2faf))
+
 ## [1.4.2](https://github.com/badj93/react-form-craft/compare/v1.4.1...v1.4.2) (2025-08-18)
 
 
