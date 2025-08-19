@@ -3,8 +3,8 @@ import type {
   ValidationErrors,
   ValidationRules,
   FormCraftHandleSubmitParams,
-} from './types.ts';
-import { validateField } from './helpers';
+} from '../types.ts';
+import { validateField } from '../helpers';
 
 interface FormProps<STATE, PAYLOAD> {
   formAction: (payload: PAYLOAD) => void;

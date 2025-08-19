@@ -1,5 +1,5 @@
 import { FormCraft } from './form-craft.tsx';
-import { useForm } from './use-form';
+import { useForm } from './hooks';
 import type {
   FormCraftField,
   FormCraftOnChange,

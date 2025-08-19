@@ -12,7 +12,7 @@ import type {
   FormCraftOnChange,
   ValidationRules,
 } from './types';
-import { useForm } from './use-form.ts';
+import { useForm } from './hooks';
 import { Checkbox, Input, Radio, Select, TextArea } from './form-elements';
 
 interface FormCraftProps<STATE> {
@@ -75,12 +75,10 @@ export function FormCraft<STATE extends Record<string, any>>({
     );
   };
 
-  const renderFields = (groupFields?: FormCraftField[]): any => {
-    return (
-      groupFields instanceof Array && groupFields?.length > 0
-        ? groupFields
-        : fields
-    ).map(({ control, ...f }) => {
+  const renderFields = (
+    fields: FormCraftField[]
+  ): ReactElement[] | ReactNode[] => {
+    return fields.map(({ control, ...f }) => {
       if (f.type === 'select') {
         if (control) {
           return renderControl(control, f);
@@ -173,7 +171,7 @@ export function FormCraft<STATE extends Record<string, any>>({
 
   return (
     <form className={className} action={formAction}>
-      {renderFields()}
+      {renderFields(fields)}
       {renderBtnSubmit()}
     </form>
   );
