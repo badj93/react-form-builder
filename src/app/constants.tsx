@@ -1,8 +1,8 @@
 import type { FormCraftField, ValidationRules } from '../types.ts';
 
 export const FIELDS: FormCraftField[] = [
-  { name: 'fio', type: 'text', placeholder: 'Enter fio...' },
-  { name: 'age', type: 'text', placeholder: 'Enter age...' },
+  { name: 'fio', placeholder: 'Enter fio...' },
+  { name: 'age', placeholder: 'Enter age...' },
   {
     name: 'sex',
     type: 'select',
@@ -12,7 +12,7 @@ export const FIELDS: FormCraftField[] = [
       { value: 'female', label: 'Female' },
     ],
   },
-  { name: 'email', type: 'text', placeholder: 'Enter email...' },
+  { name: 'email', placeholder: 'Enter email...' },
   { name: 'birthday', type: 'date', placeholder: 'Enter birthday...' },
   {
     name: 'agree',
@@ -21,7 +21,6 @@ export const FIELDS: FormCraftField[] = [
   },
   {
     name: 'custom',
-    type: 'text',
     placeholder: 'Enter custom...',
     control: <input />,
   },
@@ -43,12 +42,10 @@ export const FIELDS: FormCraftField[] = [
     group: [
       {
         name: 'name',
-        type: 'text',
         placeholder: 'Enter name',
       },
       {
         name: 'surname',
-        type: 'text',
         placeholder: 'Enter surname',
       },
       {

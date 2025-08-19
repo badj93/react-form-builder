@@ -5,7 +5,7 @@ export interface FormCraftField
     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
   > {
   name: string;
-  type:
+  type?:
     | 'text'
     | 'email'
     | 'select'

@@ -38,12 +38,10 @@ function MyForm() {
   const fields = [
     {
       name: 'name',
-      type: 'text',
       placeholder: 'Enter your name'
     },
     {
       name: 'email',
-      type: 'email',
       placeholder: 'Enter your email',
       control: (props) => <CustomInput {...props} errorMsg={props.error} />  
     },
@@ -71,7 +69,6 @@ function MyForm() {
       group: [
         {
           name: 'name',
-          type: 'text',
           placeholder: 'Enter name',
         },
         {
@@ -162,7 +159,7 @@ See examples in src/app
 ```tsx
 interface FormCraftField {
   name: string;
-  type: 
+  type?: 
       'text' | 
       'email' | 
       'password' | 
@@ -191,7 +188,6 @@ import { MyCustomInput } from './components';
 const fields = [
   {
     name: 'customField',
-    type: 'text',
     control: <MyCustomInput className="custom-input" />
   }
 ];
@@ -199,7 +195,6 @@ const fields = [
 const fields2 = [
     {
         name: 'customField',
-        type: 'text',
         control: MyCustomInput
     }
 ];
