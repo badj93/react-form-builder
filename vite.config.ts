@@ -13,6 +13,12 @@ export default defineConfig({
       insertTypesEntry: true,
     }),
   ],
+  // @ts-ignore
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./vitest.setup.ts'],
+  },
   build: {
     lib: {
       entry: {
