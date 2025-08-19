@@ -1,3 +1,10 @@
+## [1.4.10](https://github.com/badj93/react-form-craft/compare/v1.4.9...v1.4.10) (2025-08-19)
+
+
+### Bug Fixes
+
+* fix types ([bf42041](https://github.com/badj93/react-form-craft/commit/bf42041e3bf2d2ffe77d3d0c79a176acf9e22226))
+
 ## [1.4.9](https://github.com/badj93/react-form-craft/compare/v1.4.8...v1.4.9) (2025-08-18)
 
 
