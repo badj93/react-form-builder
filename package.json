@@ -11,6 +11,16 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "react",
+    "react-form",
+    "react-component",
+    "form",
+    "forms",
+    "react form craft",
+    "typescript",
+    "validation"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/badj93/react-form-craft"
