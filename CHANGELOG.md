@@ -1,3 +1,10 @@
+## [1.4.12](https://github.com/badj93/react-form-craft/compare/v1.4.11...v1.4.12) (2025-08-22)
+
+
+### Bug Fixes
+
+* add keywords ([b76f645](https://github.com/badj93/react-form-craft/commit/b76f645350b2a36b27d6febfb5693def255ca2f6))
+
 ## [1.4.11](https://github.com/badj93/react-form-craft/compare/v1.4.10...v1.4.11) (2025-08-19)
 
 
